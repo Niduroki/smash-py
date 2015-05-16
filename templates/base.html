@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html {
+	font-family: "Arial", sans-serif;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a {
+	color: #446e9b;
+}
+
+.row {
+        text-align: center;
+}
+
+.char-card {
+        display: inline-block;
+        width: 200px;
+        max-height: 400px;
+        text-align: center;
+}
+.char-card img {
+        max-width: 150px;
+}
+.char-card .name {
+        font-size: 1.3em;
+}
+
+.s-tier:before {
+        content: "S";
+        font-size: 5em;
+        color: #e00;
+}
+.a-tier:before {
+        content: "A";
+        font-size: 5em;
+        color: #f72;
+}
+.b-tier:before {
+        content: "B";
+        font-size: 5em;
+        color: #6b0;
+}
+.c-tier:before {
+        content: "C";
+        font-size: 5em;
+        color: #66f;
+}
+.d-tier:before {
+        content: "D";
+        font-size: 5em;
+        color: #a4f;
+}
+.e-tier:before {
+        content: "E";
+        font-size: 5em;
+        color: #850;
+}
+</style>
+<title>Tier-Liste</title>
+</head>
+<body>
+{% block main %}{% endblock %}
+</body>
+</html>

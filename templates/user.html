@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block main %}
+<h1><a href="/">Schäpers Lab</a></h1>
+<div class="row">
+{% for char in smash_chars %}
+	<div class="char-card">
+		<a href="/{{ char[1][0:3] }}/{{ char[0] }}/">
+			<img src="/static/{{ char[1] }}">
+		</a><br>
+		<span class="name">{{ char[0] }}</span>
+	</div>
+	{% if loop.index == 2 %}
+		</div><div class="row">
+	{% elif (loop.index-2) is divisibleby(4) %}
+		</div><div class="row">
+	{% endif %}
+{% endfor %}
+</div>
+{% endblock %}

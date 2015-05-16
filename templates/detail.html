@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block main %}
+<h1><a href="/">Schäpers Lab</a></h1>
+<h2>Tier Liste</h2>
+<hr>
+<div class="row">
+	<h1>{{ char[0] }}</h1>
+	<img src="/static/{{ char[1] }}">
+</div>
+<div>
+<h3>Starke Angriffe</h3>
+{{ good[0] }}<br>
+{{ good[1] }}
+<h3>Schwache Angriffe</h3>
+{{ bad[0] }}<br>
+{{ bad[1] }}
+<h3>Bester Taunt</h3>
+{{ taunt }}
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block main %}
+<h1><a href="/">Schäpers Lab</a></h1>
+<h2>Tier Liste</h2>
+<hr>
+<div class="row">
+	<h1>{{ name }}</h1>
+	<img src="/static/{{ char[1] }}">
+</div>
+<div class="row" style="font-size: 24px;">
+Ein {{ ranged }} Fernkämpfer und {{ melee }} Nahkämpfer mit {{ random_attr }} und {{ reflex }} Reflexen. Seine Geheimwaffe ist sein {{ secret_weapon }}.
+</div>
+{% endblock %}
