@@ -6,7 +6,7 @@
 <div class="s-tier row">
 {% for char in smash_chars %}
 	<div class="char-card">
-		<a href="{{ char[1][0:3] }}/">
+		<a href="/{{ char[1][0:3] }}/">
 			<img src="/static/{{ char[1] }}">
 		</a><br>
 		<span class="name">{{ char[0] }}</span>
@@ -24,5 +24,5 @@
 	{% endif %}
 {% endfor %}
 </div><!-- .e-tier --><hr>
-<small class="row"><a href="/u/kondou/">Kondou's amiibos</a> – <a href="/u/seijirou/">Seijirou's amiibos</a></small>
+<small class="row"><a href="/u/kondou/">Kondou's amiibos</a> – <a href="/u/seijirou/">Seijirou's amiibos</a> – <a href="/real/">Richtige Liste (Eventhubs)</a></small>
 {% endblock %}
