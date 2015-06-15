@@ -17,7 +17,8 @@ smash_chars = [
         ("König Dedede", "ddd.png"), ("Olimar", "olm.png"), ("Lucario", "lcr.png"), ("Toon-Link", "tlk.png"),
         ("Bewohner", "bwr.png"), ("Wii Fit-Trainerin", "wft.png"), ("Rosalina & Luma", "rul.png"), ("Little Mac", "lmc.png"),
         ("Quajutsu", "qjt.png"), ("Palutena", "plt.png"), ("Daraen", "drn.png"), ("Lucina", "lcn.png"), ("Shulk", "slk.png"),
-        ("Sonic", "snc.png"), ("Mega Man", "mmn.png"), ("Pac-Man", "pac.png"), ("Mii-Kämpfer", "mii.png"),
+        ("Sonic", "snc.png"), ("Mega Man", "mmn.png"), ("Pac-Man", "pac.png"), ("Mii-Kämpfer", "mii.png"), ("Ryu", "ryu.png"),
+	("Roy", "roy.png"), ("Lucas", "lcs.png")
 ]
 
 smash_attacks = [
@@ -44,13 +45,21 @@ def index():
 def user(name):
 	if name == "kondou":
 		smash_chars_copy = [
-			("Shana", "drn.png"), ("♫", "pum.png"), ("R²", "gaw.png"), ("SNES", "rob.png"), ("Flummi", "krb.png"),
-			("Edison", "pkc.png"), ("Hyperlink", "lnk.png"), ("Fanservice", "zss.png"), ("Lucifer", "lcr.png"),
-			("Luisa", "tlk.png"), ("Hnnng~", "bwr.png"), ("Alice", "rul.png"), ("Lilie", "lcn.png"),
-			("Dr. Oetker", "pac.png"),
+			("Shana", "drn.png", False), ("♫", "pum.png", True), ("R²", "gaw.png", False), ("SNES", "rob.png", False),
+			("Flummi", "krb.png", True), ("Edison", "pkc.png", True), ("Hyperlink", "lnk.png", True), ("Fanservice", "zss.png", False),
+			("Lucifer", "lcr.png", True), ("Luisa", "tlk.png", True), ("Hnnng~", "bwr.png", True), ("Alice", "rul.png", True),
+			("Lilie", "lcn.png", True), ("Dr. Oetker", "pac.png", True), ("Goth Chick", "pch.png", True), ("Woow ;)", "ysh.png", True),
+			("Pluls", "cpf.png", True), ("Ludwig", "roy.png", False)
 		]
 	elif name == "seijirou":
-		smash_chars_copy = [("Tesla", "pkc.png"), ("Negus", "ysh.png"), ("Rasenmäher", "lnk.png"), ("Dixie Kong", "ddk.png"), ("DonCamillo", "mro.png"), ("Uguu~", "bwr.png"), ("Lurio", "lcr.png"), ("eNess", "nes.png"), ("NEIN!", "snc.png"), ("Darän", "drn.png"), ("Quark", "dhd.png"), ("Demjanow", "wft.png"), ("Kackfrosch", "qjt.png"), ("LUFTIG", "bjr.png")]
+		smash_chars_copy = [
+			("Tesla", "pkc.png", True), ("Negus", "ysh.png", True), ("Rasenmäher", "lnk.png", True), ("Dixie Kong", "ddk.png", True),
+			("DonCamillo", "mro.png", True), ("Uguu~", "bwr.png", True), ("Lurio", "lcr.png", True), ("eNess", "nes.png", True),
+			("NEIN!", "snc.png", False), ("Darän", "drn.png", False), ("Quark", "dhd.png", False), ("Demjanow", "wft.png", True),
+			("Kackfrosch", "qjt.png", False), ("LUFTIG", "bjr.png", False), ("RickAstley", "glk.png", True), ("VOLLGAS", "bjr.png", False),
+			("Gildenmais", "pum.png", False), ("Para-Nurse", "zss.png", False), ("Tenshi", "plt.png", False), ("Kühlregal", "lcs.png", False),
+			("Nyancat", "mwt.png", False)
+		]
 	else:
 		return
 	random.seed(str(date.today()))
@@ -147,6 +156,7 @@ def real():
 				continue
 			elif a.string == "Meta Knight":
 				tier_list.append(search_for("Meta-Knight"))
+				continue
 			else:
 				for char in smash_chars:
 					if char[0] == a.string:

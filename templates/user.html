@@ -7,11 +7,11 @@
 		<a href="/{{ char[1][0:3] }}/{{ char[0] }}/">
 			<img src="/static/{{ char[1] }}">
 		</a><br>
-		<span class="name">{{ char[0] }}</span>
+		<span class="name{% if char[2] == False %} donthave{% endif %}">{{ char[0] }}</span>
 	</div>
 	{% if loop.index == 2 %}
 		</div><div class="row">
-	{% elif (loop.index-2) is divisibleby(4) %}
+	{% elif (loop.index-2) is divisibleby(5) %}
 		</div><div class="row">
 	{% endif %}
 {% endfor %}
