@@ -2,7 +2,7 @@
 {% block main %}
 <h1>Schäpers Lab</h1>
 <h2>Tier Liste</h2>
-<h3>The one and only – Letze Aktualisierung: {{ updated_at }}</h3>
+<h3>Die einzige Liste mit experimentellen Tier-Mechanismen – Letze Aktualisierung: {{ updated_at }}</h3>
 <div class="s-tier row">
 {% for char in smash_chars %}
 	<div class="char-card">
@@ -11,18 +11,18 @@
 		</a><br>
 		<span class="name">{{ char[0] }}</span>
 	</div>
-	{% if loop.index == 1 %}
+	{% if loop.index == 2 %}
 		</div><hr><div class="a-tier row">
-	{% elif loop.index == 9 %}
+	{% elif loop.index == 8 %}
 		</div><hr><div class="b-tier row">
-	{% elif loop.index == 17 %}
+	{% elif loop.index == 18 %}
 		</div><hr><div class="c-tier row">
-	{% elif loop.index == 36 %}
+	{% elif loop.index == 37 %}
 		</div><hr><div class="d-tier row">
-	{% elif loop.index == 47 %}
+	{% elif loop.index == 49 %}
 		</div><hr><div class="e-tier row">
 	{% endif %}
 {% endfor %}
 </div><!-- .e-tier --><hr>
-<small class="row"><a href="/u/kondou/">Kondou's amiibos</a> – <a href="/u/seijirou/">Seijirou's amiibos</a> – <a href="/real/">Richtige Liste (Eventhubs)</a></small>
+<small class="row"><a href="/u/kondou/">Kondou's amiibos</a> – <a href="/u/seijirou/">Seijirou's amiibos</a> – <a href="https://www.eventhubs.com/tiers/ssbu/">Richtige Liste (Eventhubs)</a> – Ergebnisse auf dieser Seite sind zufällig.</small>
 {% endblock %}

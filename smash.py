@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request
 from datetime import date
 import random
-import urllib.request
-from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -13,12 +11,16 @@ smash_chars = [
         ("Pikachu", "pkc.png"), ("Fox", "fox.png"), ("Donkey Kong", "dko.png"), ("Link", "lnk.png"), ("Samus", "sms.png"),
         ("Yoshi", "ysh.png"), ("Luigi", "lgi.png"), ("Captain Falcon", "cpf.png"), ("Peach", "pch.png"), ("Bowser", "bws.png"),
         ("Zelda", "zld.png"), ("Shiek", "shk.png"), ("Marth", "mrt.png"), ("Meta-Knight", "mtk.png"), ("Pit", "pit.png"),
-        ("Zero Suit Samus", "zss.png"), ("Ike", "ike.png"), ("Glurak", "glk.png"), ("Diddy Kong", "ddk.png"),
+        ("Zero Suit Samus", "zss.png"), ("Ike", "ike.png"), ("Diddy Kong", "ddk.png"),
         ("König Dedede", "ddd.png"), ("Olimar", "olm.png"), ("Lucario", "lcr.png"), ("Toon-Link", "tlk.png"),
         ("Bewohner", "bwr.png"), ("Wii Fit-Trainerin", "wft.png"), ("Rosalina & Luma", "rul.png"), ("Little Mac", "lmc.png"),
         ("Quajutsu", "qjt.png"), ("Palutena", "plt.png"), ("Daraen", "drn.png"), ("Lucina", "lcn.png"), ("Shulk", "slk.png"),
         ("Sonic", "snc.png"), ("Mega Man", "mmn.png"), ("Pac-Man", "pac.png"), ("Mii-Kämpfer", "mii.png"), ("Ryu", "ryu.png"),
-	("Roy", "roy.png"), ("Lucas", "lcs.png")
+        ("Roy", "roy.png"), ("Lucas", "lcs.png"), ("Corrin", "crr.png"), ("Cloud", "cld.png"), ("Bayonetta", "byn.png"),
+        ("Junger Link", "ylk.png"), ("Pokémon Trainer", "pkm.png"), ("Ice Climbers", "icl.png"), ("Snake", "snk.png"),
+        ("Daisy", "dsy.png"), ("Piranha Pflanze", "ppl.png"), ("King K. Rool", "kkr.png"), ("Ridley", "rdl.png"),
+        ("Dunkle Samus", "dsm.png"), ("Fuegro", "icr.png"), ("Chrom", "chr.png"), ("Melinda", "isb.png"), ("Wolf", "wlf.png"),
+        ("Inkling", "ikl.png"), ("Ken", "ken.png"), ("Simon", "smn.png"), ("Richter", "rch.png"), ("Pichu", "pcu.png"),
 ]
 
 smash_attacks = [
@@ -45,11 +47,12 @@ def index():
 def user(name):
 	if name == "kondou":
 		smash_chars_copy = [
-			("Shana", "drn.png", False), ("♫", "pum.png", True), ("R²", "gaw.png", False), ("SNES", "rob.png", False),
-			("Flummi", "krb.png", True), ("Edison", "pkc.png", True), ("Hyperlink", "lnk.png", True), ("Fanservice", "zss.png", False),
+			("Shana", "drn.png", True), ("♫", "pum.png", True), ("R² c R³", "gaw.png", True),
+			("Flummi", "krb.png", True), ("Edison", "pkc.png", True), ("Hyperlink", "lnk.png", True), ("Hawkeye", "zss.png", True),
 			("Lucifer", "lcr.png", True), ("Luisa", "tlk.png", True), ("Hnnng~", "bwr.png", True), ("Alice", "rul.png", True),
 			("Lilie", "lcn.png", True), ("Dr. Oetker", "pac.png", True), ("Goth Chick", "pch.png", True), ("Woow ;)", "ysh.png", True),
-			("Pluls", "cpf.png", True), ("Ludwig", "roy.png", False)
+			("Pluls", "cpf.png", True), ("Mah Boy", "roy.png", True), ("SmokeWeed", "ikl.png", True), ("Mercer", "chr.png", True),
+                        ("Fuffi", "isb.png", True), ("Kaktus", "ppl.png", False), ("HammerBros", "icl.png", False), ("Hayter", "snk.png", False),
 		]
 	elif name == "seijirou":
 		smash_chars_copy = [
@@ -100,85 +103,6 @@ def amiibo_detail(shortcut, name):
 	reflex = random.choice(["exzellenten", "schnellen", "guten", "langsamen", "slow-motion"])
 	secret_weapon = random.choice(rating) + " " + random.choice(smash_attacks)
 	return render_template("amiibo_detail.html", char=character, name=name, ranged=ranged, melee=melee, random_attr=random_attr, reflex=reflex, secret_weapon=secret_weapon)
-
-@app.route('/real/')
-def real():
-	req = urllib.request.Request("http://www4.eventhubs.com/tiers/ssb4/")
-	html = urllib.request.urlopen(req).read().decode("utf-8")
-	soup = BeautifulSoup(html)
-	tier_list = []
-	for a in soup.find(id="tiers1").find_all("a"):
-		if "Vote" not in a:
-			if a.string == "Rosalina":
-				tier_list.append(search_for("Rosalina & Luma"))
-				continue
-			elif a.string == "Sheik":
-				tier_list.append(search_for("Shiek"))
-				continue
-			elif a.string == "Mewtwo":
-				tier_list.append(search_for("Mewtu"))
-				continue
-			elif a.string == "Villager":
-				tier_list.append(search_for("Bewohner"))
-				continue
-			elif a.string == "ROB":
-				tier_list.append(search_for("R.O.B."))
-				continue
-			elif a.string == "Robin":
-				tier_list.append(search_for("Daraen"))
-				continue
-			elif a.string == "Jigglypuff":
-				tier_list.append(search_for("Pummeluff"))
-				continue
-			elif a.string == "Greninja":
-				tier_list.append(search_for("Quajutsu"))
-				continue
-			elif a.string == "Wii Fit Trainer":
-				tier_list.append(search_for("Wii Fit-Trainerin"))
-				continue
-			elif a.string == "Dark Pit":
-				tier_list.append(search_for("Finsterer Pit"))
-				continue
-			elif a.string == "Toon Link":
-				tier_list.append(search_for("Toon-Link"))
-				continue
-			elif a.string == "King Dedede":
-				tier_list.append(search_for("König Dedede"))
-				continue
-			elif a.string == "Duckhunt":
-				tier_list.append(search_for("Duck-Hunt-Duo"))
-				continue
-			elif a.string == "Mr. Game and Watch":
-				tier_list.append(search_for("Mr. Game & Watch"))
-				continue
-			elif a.string == "Charizard":
-				tier_list.append(search_for("Glurak"))
-				continue
-			elif a.string == "Meta Knight":
-				tier_list.append(search_for("Meta-Knight"))
-				continue
-			else:
-				for char in smash_chars:
-					if char[0] == a.string:
-						tier_list.append(char)
-						continue
-			print(a.string)
-
-	tier_list.append(search_for("Mii-Kämpfer"))
-
-	updated_at = str(date.today()) + " " + str(random.randint(3, 9)) + ":"
-	minute = random.randint(1,59)
-	if minute < 10:
-		minute = "0" + str(minute)
-	else:
-		minute = str(minute)
-	updated_at += minute
-	return render_template("index.html", smash_chars=tier_list, updated_at=updated_at)
-
-def search_for(name):
-	for char in smash_chars:
-		if char[0] == name:
-			return char
 
 if __name__ == "__main__":
 	app.run(host="0.0.0.0", debug=True)
