@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block main %}
-<h1>Schäpers Lab</h1>
+<h1>Niduroki Labs</h1>
 <h2>Tier Liste</h2>
 <h3>Die einzige Liste mit experimentellen Tier-Mechanismen – Letze Aktualisierung: {{ updated_at }}</h3>
 <div class="s-tier row">
@@ -21,7 +21,9 @@
 		</div><hr><div class="d-tier row">
 	{% elif loop.index == 49 %}
 		</div><hr><div class="e-tier row">
+        {% elif loop.index == 73 %}
+                </div><hr><div class="z-tier row">
 	{% endif %}
 {% endfor %}
-</div><!-- .e-tier -->
+</div><!-- .z-tier -->
 {% endblock %}

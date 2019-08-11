@@ -21,7 +21,7 @@ smash_chars = [
         ("Daisy", "dsy.png"), ("Piranha Pflanze", "ppl.png"), ("King K. Rool", "kkr.png"), ("Ridley", "rdl.png"),
         ("Dunkle Samus", "dsm.png"), ("Fuegro", "icr.png"), ("Chrom", "chr.png"), ("Melinda", "isb.png"), ("Wolf", "wlf.png"),
         ("Inkling", "ikl.png"), ("Ken", "ken.png"), ("Simon", "smn.png"), ("Richter", "rch.png"), ("Pichu", "pcu.png"),
-        ("Joker", "jok.png"),
+        ("Joker", "jok.png"), ("Held", "her.png"),
 ]
 
 smash_attacks = [
@@ -46,14 +46,14 @@ def index():
 
 @app.route('/u/<name>/')
 def user(name):
-	if name == "kondou":
+	if name == "niduroki":
 		smash_chars_copy = [
 			("Shana", "drn.png", True), ("♫", "pum.png", True), ("R² c R³", "gaw.png", True),
 			("Flummi", "krb.png", True), ("Edison", "pkc.png", True), ("Hyperlink", "lnk.png", True), ("Hawkeye", "zss.png", True),
 			("Lucifer", "lcr.png", True), ("Luisa", "tlk.png", True), ("Hnnng~", "bwr.png", True), ("Alice", "rul.png", True),
 			("Lilie", "lcn.png", True), ("Dr. Oetker", "pac.png", True), ("Goth Chick", "pch.png", True), ("Woow ;)", "ysh.png", True),
 			("Pluls", "cpf.png", True), ("Mah Boy", "roy.png", True), ("SmokeWeed", "ikl.png", True), ("Mercer", "chr.png", True),
-                        ("Fuffi", "isb.png", True), ("Kaktus", "ppl.png", False), ("HammerBros", "icl.png", False), ("Hayter", "snk.png", False),
+                        ("Fuffi", "isb.png", True), ("Kaktus", "ppl.png", True), ("HammerBros", "icl.png", True), ("Hayter", "snk.png", True),
 		]
 	elif name == "seijirou":
 		smash_chars_copy = [
@@ -100,7 +100,7 @@ def amiibo_detail(shortcut, name):
 	rating = ["unbesiegbarer", "starker", "guter", "mittelmäßiger", "schlechter", "mieser"]
 	ranged = random.choice(rating)
 	melee = random.choice(rating)
-	random_attr = random.choice(["ausgezeichneten", "guten", "schlechten", "nicht vorhandenen"]) + " " + random.choice(["Gimp-Künsten", "Spot-Dodges", "Smashes", "Würfen", "SDs"])
+	random_attr = random.choice(["ausgezeichneten", "guten", "schlechten", "nicht vorhandenen"]) + " " + random.choice(["Gimp-Künsten", "Spot-Dodges", "Smashes", "Würfen", "SDs", "Taunts"])
 	reflex = random.choice(["exzellenten", "schnellen", "guten", "langsamen", "slow-motion"])
 	secret_weapon = random.choice(rating) + " " + random.choice(smash_attacks)
 	return render_template("amiibo_detail.html", char=character, name=name, ranged=ranged, melee=melee, random_attr=random_attr, reflex=reflex, secret_weapon=secret_weapon)
