@@ -21,7 +21,7 @@ smash_chars = [
         ("Daisy", "dsy.png"), ("Piranha Pflanze", "ppl.png"), ("King K. Rool", "kkr.png"), ("Ridley", "rdl.png"),
         ("Dunkle Samus", "dsm.png"), ("Fuegro", "icr.png"), ("Chrom", "chr.png"), ("Melinda", "isb.png"), ("Wolf", "wlf.png"),
         ("Inkling", "ikl.png"), ("Ken", "ken.png"), ("Simon", "smn.png"), ("Richter", "rch.png"), ("Pichu", "pcu.png"),
-        ("Joker", "jok.png"), ("Held", "her.png"), ("Banjo & Kazooie", "bak.png"),
+        ("Joker", "jok.png"), ("Held", "her.png"), ("Banjo & Kazooie", "bak.png"), ("Terry", "ter.png"), ("Byleth", "byl.png"),
 ]
 
 smash_attacks = [
