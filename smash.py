@@ -23,7 +23,8 @@ smash_chars = [
     ("King K. Rool", "kkr.png"), ("Ridley", "rdl.png"), ("Dunkle Samus", "dsm.png"), ("Fuegro", "icr.png"),
     ("Chrom", "chr.png"), ("Melinda", "isb.png"), ("Wolf", "wlf.png"), ("Inkling", "ikl.png"), ("Ken", "ken.png"),
     ("Simon", "smn.png"), ("Richter", "rch.png"), ("Pichu", "pcu.png"), ("Joker", "jok.png"), ("Held", "her.png"),
-    ("Banjo & Kazooie", "bak.png"), ("Terry", "ter.png"), ("Byleth", "byl.png"),
+    ("Banjo & Kazooie", "bak.png"), ("Terry", "ter.png"), ("Byleth", "byl.png"), ("Sephiroth", "sph.png"),
+    ("Min Min", "min.png"), ("Steve", "stv.png"), ("Pyra", "pyr.png"),
 ]
 smash_attacks = [
     "Down Air", "Forward Air", "Back Air", "Up Air", "Neutral Air", "Down Tilt", "Side Tilt", "Up Tilt", "Jab",
