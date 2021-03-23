@@ -8,4 +8,7 @@ COPY . /smash/
 
 EXPOSE 80
 
+RUN useradd smash && chown -R smash /smash
+USER smash
+
 CMD [ "uwsgi", "smash-py.ini" ]
