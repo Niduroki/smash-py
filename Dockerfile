@@ -6,9 +6,9 @@ RUN mkdir /smash/
 WORKDIR /smash/
 COPY . /smash/
 
-EXPOSE 80
+EXPOSE 8000
 
-RUN useradd smash && chown -R smash /smash
-USER smash
+RUN useradd uwsgi && chown -R uwsgi /smash
+USER uwsgi
 
 CMD [ "uwsgi", "smash-py.ini" ]
