@@ -1,19 +1,19 @@
 FROM python:3-alpine
 
-RUN apk add --no-cache gcc libc-dev linux-headers
+RUN mkdir /app/
+WORKDIR /app/
 
-RUN mkdir /smash/
-WORKDIR /smash/
-COPY . /smash/
-
-ENV VIRTUAL_ENV=/smash/venv
+ENV VIRTUAL_ENV=/app/venv
 RUN python -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
+RUN adduser -S app && chown -R app /app
+USER app
+
+RUN pip install --no-cache-dir flask gunicorn
+
 EXPOSE 8000
 
-RUN adduser -S uwsgi && chown -R uwsgi /smash
-USER uwsgi
-RUN pip install --no-cache-dir flask uwsgi
+COPY . /app/
 
-CMD [ "uwsgi", "smash-py.ini" ]
+CMD [ "gunicorn", "-b", "0.0.0.0:8000", "smash:app" ]
