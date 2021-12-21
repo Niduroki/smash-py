@@ -1,30 +1,30 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 from datetime import date
 import random
 
 app = Flask(__name__)
 
 smash_chars = [
-    ("Pummeluff", "pum.png"), ("Duck-Hunt-Duo", "dhd.png"), ("Mr. Game & Watch", "gaw.png"),
-    ("Finsterer Pit", "dpt.png"), ("Ganondorf", "gdf.png"), ("R.O.B.", "rob.png"), ("Bowser Jr.", "bjr.png"),
-    ("Dr. Mario", "dmr.png"), ("Wario", "wro.png"), ("Falco", "flo.png"), ("Ness", "nes.png"), ("Mewtu", "mwt.png"),
-    ("Mario", "mro.png"), ("Kirby", "krb.png"), ("Pikachu", "pkc.png"), ("Fox", "fox.png"), ("Donkey Kong", "dko.png"),
-    ("Link", "lnk.png"), ("Samus", "sms.png"), ("Yoshi", "ysh.png"), ("Luigi", "lgi.png"),
-    ("Captain Falcon", "cpf.png"), ("Peach", "pch.png"), ("Bowser", "bws.png"), ("Zelda", "zld.png"),
-    ("Shiek", "shk.png"), ("Marth", "mrt.png"), ("Meta-Knight", "mtk.png"), ("Pit", "pit.png"),
-    ("Zero Suit Samus", "zss.png"), ("Ike", "ike.png"), ("Diddy Kong", "ddk.png"), ("König Dedede", "ddd.png"),
-    ("Olimar", "olm.png"), ("Lucario", "lcr.png"), ("Toon-Link", "tlk.png"), ("Bewohner", "bwr.png"),
-    ("Wii Fit-Trainerin", "wft.png"), ("Rosalina & Luma", "rul.png"), ("Little Mac", "lmc.png"),
-    ("Quajutsu", "qjt.png"), ("Palutena", "plt.png"), ("Daraen", "drn.png"), ("Lucina", "lcn.png"),
-    ("Shulk", "slk.png"), ("Sonic", "snc.png"), ("Mega Man", "mmn.png"), ("Pac-Man", "pac.png"),
-    ("Mii-Kämpfer", "mii.png"), ("Ryu", "ryu.png"), ("Roy", "roy.png"), ("Lucas", "lcs.png"), ("Corrin", "crr.png"),
-    ("Cloud", "cld.png"), ("Bayonetta", "byn.png"), ("Junger Link", "ylk.png"), ("Pokémon Trainer", "pkm.png"),
-    ("Ice Climbers", "icl.png"), ("Snake", "snk.png"), ("Daisy", "dsy.png"), ("Piranha Pflanze", "ppl.png"),
-    ("King K. Rool", "kkr.png"), ("Ridley", "rdl.png"), ("Dunkle Samus", "dsm.png"), ("Fuegro", "icr.png"),
-    ("Chrom", "chr.png"), ("Melinda", "isb.png"), ("Wolf", "wlf.png"), ("Inkling", "ikl.png"), ("Ken", "ken.png"),
-    ("Simon", "smn.png"), ("Richter", "rch.png"), ("Pichu", "pcu.png"), ("Joker", "jok.png"), ("Held", "her.png"),
-    ("Banjo & Kazooie", "bak.png"), ("Terry", "ter.png"), ("Byleth", "byl.png"), ("Sephiroth", "sph.png"),
-    ("Min Min", "min.png"), ("Steve", "stv.png"), ("Pyra", "pyr.png"),
+    ("Pummeluff", "pum.webp"), ("Duck-Hunt-Duo", "dhd.webp"), ("Mr. Game & Watch", "gaw.webp"),
+    ("Finsterer Pit", "dpt.webp"), ("Ganondorf", "gdf.webp"), ("R.O.B.", "rob.webp"), ("Bowser Jr.", "bjr.webp"),
+    ("Dr. Mario", "dmr.webp"), ("Wario", "wro.webp"), ("Falco", "flo.webp"), ("Ness", "nes.webp"), ("Mewtu", "mwt.webp"),
+    ("Mario", "mro.webp"), ("Kirby", "krb.webp"), ("Pikachu", "pkc.webp"), ("Fox", "fox.webp"), ("Donkey Kong", "dko.webp"),
+    ("Link", "lnk.webp"), ("Samus", "sms.webp"), ("Yoshi", "ysh.webp"), ("Luigi", "lgi.webp"),
+    ("Captain Falcon", "cpf.webp"), ("Peach", "pch.webp"), ("Bowser", "bws.webp"), ("Zelda", "zld.webp"),
+    ("Shiek", "shk.webp"), ("Marth", "mrt.webp"), ("Meta-Knight", "mtk.webp"), ("Pit", "pit.webp"),
+    ("Zero Suit Samus", "zss.webp"), ("Ike", "ike.webp"), ("Diddy Kong", "ddk.webp"), ("König Dedede", "ddd.webp"),
+    ("Olimar", "olm.webp"), ("Lucario", "lcr.webp"), ("Toon-Link", "tlk.webp"), ("Bewohner", "bwr.webp"),
+    ("Wii Fit-Trainerin", "wft.webp"), ("Rosalina & Luma", "rul.webp"), ("Little Mac", "lmc.webp"),
+    ("Quajutsu", "qjt.webp"), ("Palutena", "plt.webp"), ("Daraen", "drn.webp"), ("Lucina", "lcn.webp"),
+    ("Shulk", "slk.webp"), ("Sonic", "snc.webp"), ("Mega Man", "mmn.webp"), ("Pac-Man", "pac.webp"),
+    ("Mii-Kämpfer", "mii.webp"), ("Ryu", "ryu.webp"), ("Roy", "roy.webp"), ("Lucas", "lcs.webp"), ("Corrin", "crr.webp"),
+    ("Cloud", "cld.webp"), ("Bayonetta", "byn.webp"), ("Junger Link", "ylk.webp"), ("Pokémon Trainer", "pkm.webp"),
+    ("Ice Climbers", "icl.webp"), ("Snake", "snk.webp"), ("Daisy", "dsy.webp"), ("Piranha Pflanze", "ppl.webp"),
+    ("King K. Rool", "kkr.webp"), ("Ridley", "rdl.webp"), ("Dunkle Samus", "dsm.webp"), ("Fuegro", "icr.webp"),
+    ("Chrom", "chr.webp"), ("Melinda", "isb.webp"), ("Wolf", "wlf.webp"), ("Inkling", "ikl.webp"), ("Ken", "ken.webp"),
+    ("Simon", "smn.webp"), ("Richter", "rch.webp"), ("Pichu", "pcu.webp"), ("Joker", "jok.webp"), ("Held", "her.webp"),
+    ("Banjo & Kazooie", "bak.webp"), ("Terry", "ter.webp"), ("Byleth", "byl.webp"), ("Sephiroth", "sph.webp"),
+    ("Min Min", "min.webp"), ("Steve", "stv.webp"), ("Pyra", "pyr.webp"),
 ]
 smash_attacks = [
     "Down Air", "Forward Air", "Back Air", "Up Air", "Neutral Air", "Down Tilt", "Side Tilt", "Up Tilt", "Jab",
@@ -52,24 +52,24 @@ def index():
 def user(name):
     if name == "niduroki":
         smash_chars_copy = [
-            ("Shana", "drn.png", True), ("♫", "pum.png", True), ("R² c R³", "gaw.png", True),
-            ("Flummi", "krb.png", True), ("Edison", "pkc.png", True), ("Hyperlink", "lnk.png", True),
-            ("Hawkeye", "zss.png", True), ("Lucifer", "lcr.png", True), ("Luisa", "tlk.png", True),
-            ("Hnnng~", "bwr.png", True), ("Alice", "rul.png", True),
-            ("Lilie", "lcn.png", True), ("Dr. Oetker", "pac.png", True), ("Goth Chick", "pch.png", True),
-            ("Woow ;)", "ysh.png", True), ("Pluls", "cpf.png", True), ("Mah Boy", "roy.png", True),
-            ("SmokeWeed", "ikl.png", True), ("Mercer", "chr.png", True), ("Fuffi", "isb.png", True),
-            ("Kaktus", "ppl.png", True), ("HammerBros", "icl.png", True), ("Hayter", "snk.png", True),
+            ("Shana", "drn.webp", True), ("♫", "pum.webp", True), ("R² c R³", "gaw.webp", True),
+            ("Flummi", "krb.webp", True), ("Edison", "pkc.webp", True), ("Hyperlink", "lnk.webp", True),
+            ("Hawkeye", "zss.webp", True), ("Lucifer", "lcr.webp", True), ("Luisa", "tlk.webp", True),
+            ("Hnnng~", "bwr.webp", True), ("Alice", "rul.webp", True),
+            ("Lilie", "lcn.webp", True), ("Dr. Oetker", "pac.webp", True), ("Goth Chick", "pch.webp", True),
+            ("Woow ;)", "ysh.webp", True), ("Pluls", "cpf.webp", True), ("Mah Boy", "roy.webp", True),
+            ("SmokeWeed", "ikl.webp", True), ("Mercer", "chr.webp", True), ("Fuffi", "isb.webp", True),
+            ("Kaktus", "ppl.webp", True), ("HammerBros", "icl.webp", True), ("Hayter", "snk.webp", True),
         ]
     elif name == "seijirou":
         smash_chars_copy = [
-            ("Tesla", "pkc.png", True), ("Negus", "ysh.png", True), ("Rasenmäher", "lnk.png", True),
-            ("Dixie Kong", "ddk.png", True), ("DonCamillo", "mro.png", True), ("Uguu~", "bwr.png", True),
-            ("Lurio", "lcr.png", True), ("eNess", "nes.png", True), ("NEIN!", "snc.png", False),
-            ("Darän", "drn.png", False), ("Quark", "dhd.png", False), ("Demjanow", "wft.png", True),
-            ("Kackfrosch", "qjt.png", False), ("LUFTIG", "bjr.png", False), ("RickAstley", "glk.png", True),
-            ("VOLLGAS", "bjr.png", False), ("Gildenmais", "pum.png", False), ("Para-Nurse", "zss.png", False),
-            ("Tenshi", "plt.png", False), ("Kühlregal", "lcs.png", False), ("Nyancat", "mwt.png", False)
+            ("Tesla", "pkc.webp", True), ("Negus", "ysh.webp", True), ("Rasenmäher", "lnk.webp", True),
+            ("Dixie Kong", "ddk.webp", True), ("DonCamillo", "mro.webp", True), ("Uguu~", "bwr.webp", True),
+            ("Lurio", "lcr.webp", True), ("eNess", "nes.webp", True), ("NEIN!", "snc.webp", False),
+            ("Darän", "drn.webp", False), ("Quark", "dhd.webp", False), ("Demjanow", "wft.webp", True),
+            ("Kackfrosch", "qjt.webp", False), ("LUFTIG", "bjr.webp", False), ("RickAstley", "glk.webp", True),
+            ("VOLLGAS", "bjr.webp", False), ("Gildenmais", "pum.webp", False), ("Para-Nurse", "zss.webp", False),
+            ("Tenshi", "plt.webp", False), ("Kühlregal", "lcs.webp", False), ("Nyancat", "mwt.webp", False)
         ]
     else:
         return
